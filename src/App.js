@@ -76,7 +76,7 @@ class App extends Component {
                     </form>
                   </div>
                 </div> : null}
-              {this.state.welcome ? <p className="welcome">Bienvenido {this.state.prueba}</p> : null}
+              {this.state.welcome ? <div className="welcome"><h4>PEDIDO</h4><p >Bienvenido {this.state.prueba}</p></div> : null}
             </div>
           </div>
         </div>

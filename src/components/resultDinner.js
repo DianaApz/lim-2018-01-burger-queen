@@ -60,7 +60,7 @@ class ResultDinner extends Component {
           <div className="col-6">
             <div>
               {this.state.operations.map((menu, i) => {
-                return (<div key={i}>
+                return (<div className="card" key={i}>
                   {menu.type}<span className="close"
                     onClick={() => this.handleDelete(i)}>
                     x
