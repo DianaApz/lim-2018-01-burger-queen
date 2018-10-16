@@ -13,7 +13,7 @@ class ResultBreak extends Component {
         const array = this.state.operations
         const value = e.target.getAttribute('data-value')
         const label = e.target.getAttribute('data-tag');
-        console.log(label)
+        // console.log(label)
         array.push({ type: label, price: value });
         // this.setState({ operations: array })
         this.state.operations.map((obj) => {
@@ -29,8 +29,10 @@ class ResultBreak extends Component {
                 return index !== id
             }),
         })
-        this.state.operations.map((obj) => {
-            this.setState({ total: this.state.total - parseInt(obj.price) })
+        this.state.operations.forEach((e, i) => {
+            if (i === id) {
+                this.setState({ total: this.state.total - parseInt(e.price) })
+            }
         })
 
     }

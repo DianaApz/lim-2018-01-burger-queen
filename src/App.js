@@ -3,8 +3,8 @@ import ResultBreak from './components/resultBreak';
 import ResultDinner from './components/resultDinner';
 // import ResultDinner from './components/resultDinner';
 // import Change from './components/change';
-import data from './menu.json'
-import logo from './logo.svg';
+// import data from './menu.json'
+// import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -44,8 +44,6 @@ class App extends Component {
     })
   }
   render() {
-    const { title, children } = this.props;
-    const { isOpened } = this.state;
     return (
       <div className="App">
         <header className="App-header">
