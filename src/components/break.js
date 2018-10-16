@@ -3,20 +3,22 @@ import React, { Component } from 'react';
 class Breakfast extends Component {
     constructor(prop) {
         super(prop)
-        
-        this.break = prop.break
+        this.food = prop.food
         this.price = prop.price
+        this.text=`${this.food} S/${this.price}`
     }
-    
+
     render() {
         return (
-            <div
+            <div className="card">
+            <div 
               onClick={this.props.onClick}
               className="Button"
-              data-size={this.props.size}
+              data-tag={this.text}
               data-value={this.props.value}
-            >{this.break} {this.price}
-              {/* {this.props.label} */}
+            >{this.food} S/{this.price}
+              
+            </div>
             </div>
           )
     }

@@ -1,35 +1,47 @@
 import React, { Component } from 'react';
-import Breakfast from './components/break';
-import Dinner from './components/dinner';
-import Change from './components/change';
+import ResultBreak from './components/resultBreak';
+import ResultDinner from './components/resultDinner';
+// import ResultDinner from './components/resultDinner';
+// import Change from './components/change';
 import data from './menu.json'
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
-
     this.state = {
-      showResults: false,
-      show: false
+      showBreak: true,
+      showDinner: false,
+      showForm: true,
+      welcome: false,
+      name: '',
+      prueba: ''
     };
-    // console.log(data);
     this.clickBreakfast = this.clickBreakfast.bind(this)
     this.clickDinner = this.clickDinner.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
   clickBreakfast() {
-    this.setState({ showResults: true });
+    this.setState({ showDinner: false, showBreak: true });
   }
   clickDinner(e) {
-    this.setState({ show: true });
-    this.setState({ showResults: false });
+    this.setState({ showDinner: true, showBreak: false });
   }
-
-  clickBreakfast() {
-    this.setState({ showResults: true });
-    this.setState({ show: false });
+  handleChange(e) {
+    this.setState({ name: e.target.value });
+  }
+  handleClick(e) {
+    console.log(e.target.getAttribute('data-tag'))
+    document.getElementById('myInput').value = ''
+    this.setState({
+      prueba: this.state.name
+    });
+    this.setState({
+      showForm: false,
+      welcome: true
+    })
   }
   render() {
     const { title, children } = this.props;
@@ -37,68 +49,46 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <p>
             Burger queen
           </p>
-
         </header>
-        <div><button onClick={this.clickBreakfast}>Desayuno</button>
-          {this.state.showResults ? <ResultBreak /> : null}
+        <div>
+          {this.state.showForm ? <form >
+            <label>
+              Ingrese su nombre :
+            </label>
+            <input
+              id='myInput'
+              onChange={this.handleChange}
+            />
+            <button type='button' data-tag={this.state.name} onClick={this.handleClick}>
+              Enviar
+            </button>
+          </form> : null}
+          {this.state.welcome ? <p>Bienvenido {this.state.prueba}</p>: null}
         </div>
-
-        <div> <button onClick={this.clickDinner}>Almuerzo</button></div>
-        {this.state.show ? <ResultDinner /> : null}
-      </div>
-
-    )
-  }
-}
-class ResultBreak extends Component {
-  constructor() {
-    super()
-    this.state = { operations: [] }
-    this.handleClick = this.handleClick.bind(this)
-  }
-  handleClick(e) {
-    const value = e.target.getAttribute('data-value')
-  }
-  render() {
-    return (
-      <div>
-
-        <Change>
-          <div>
-            {data.Desayuno.map((menubreak, i) => {
-              return (<Breakfast
-                onClick={this.handleClick} label={menubreak.price} value={menubreak.price}
-                break={menubreak.type}
-                price={menubreak.price}
-                key={i}
-              />);
-            })
-            }
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <div className="btn btn-secondary" onClick={this.clickBreakfast}>Desayuno</div>
+              <div className="btn btn-info" onClick={this.clickDinner}>Almuerzo</div>
+            </div>
           </div>
-        </Change>
-      </div>
-    )
-  }
-
-}
-class ResultDinner extends Component {
-  render() {
-    // console.log(data.Almuerzo)
-    return (
-      <div>
-        {data.Almuerzo.map((menudinner, i) => {
-          return (<Dinner
-            dinner={menudinner.type}
-            price={menudinner.price}
-            key={i}
-          />);
-        })
-        }
-      </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div>
+                {this.state.showBreak ? <ResultBreak /> : null}
+              </div>
+              <div>
+                {this.state.showDinner ? <ResultDinner /> : null}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div >
     )
   }
 }
