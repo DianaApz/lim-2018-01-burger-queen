@@ -51,26 +51,32 @@ class App extends Component {
             Burger queen
           </p>
         </header>
-        <div>
-          {this.state.showForm ? <form >
-            <label>
-              Ingrese su nombre :
-            </label>
-            <input
-              id='myInput'
-              onChange={this.handleChange}
-            />
-            <button type='button' data-tag={this.state.name} onClick={this.handleClick}>
-              Enviar
-            </button>
-          </form> : null}
-          {this.state.welcome ? <p>Bienvenido {this.state.prueba}</p>: null}
-        </div>
+
         <div className="container">
           <div className="row">
-            <div className="col-6">
+            <div className="col-6 buttons">
               <div className="btn btn-secondary" onClick={this.clickBreakfast}>Desayuno</div>
               <div className="btn btn-info" onClick={this.clickDinner}>Almuerzo</div>
+            </div>
+            <div className="col-6">
+              {this.state.showForm ?
+                <div className="box float-right">
+                  <div className="">
+                    <form className="">
+                      <label>
+                        Ingrese su nombre :
+                </label>
+                      <input
+                        id='myInput'
+                        onChange={this.handleChange}
+                      />
+                      <button type='button' data-tag={this.state.name} onClick={this.handleClick}>
+                        Enviar
+                </button>
+                    </form>
+                  </div>
+                </div> : null}
+              {this.state.welcome ? <p className="welcome">Bienvenido {this.state.prueba}</p> : null}
             </div>
           </div>
         </div>

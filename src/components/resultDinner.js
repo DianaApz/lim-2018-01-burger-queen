@@ -39,9 +39,7 @@ class ResultDinner extends Component {
 
   }
   render() {
-    console.log(this.state.operations);
-    console.log(this.state.total);
-    // console.log(data.Almuerzo)
+
     return (
       <div>
         <div className="row">
