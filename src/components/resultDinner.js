@@ -6,10 +6,8 @@ class ResultDinner extends Component {
   constructor() {
     super()
     this.state = { operations: [], total: 0 }
-    this.handleClick = this.handleClick.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
   }
-  handleClick(e) {
+  handleClick=(e)=>{
 
     const array = this.state.operations
     const value = e.target.getAttribute('data-value')
@@ -22,7 +20,7 @@ class ResultDinner extends Component {
       this.setState({ total: this.state.total + parseInt(obj.price) })
     })
   }
-  handleDelete(id) {
+  handleDelete=(id)=> {
     console.log(this.state.operations);
     this.setState({
       operations: this.state.operations.filter((e, index) => {

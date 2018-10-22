@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import ResultBreak from './components/resultBreak';
 import ResultDinner from './components/resultDinner';
-// import ResultDinner from './components/resultDinner';
-// import Change from './components/change';
-// import data from './menu.json'
-// import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -18,21 +14,17 @@ class App extends Component {
       name: '',
       prueba: ''
     };
-    this.clickBreakfast = this.clickBreakfast.bind(this)
-    this.clickDinner = this.clickDinner.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
   }
-  clickBreakfast() {
-    this.setState({ showDinner: false, showBreak: true });
+  clickBreakfast = () => {
+    return this.setState({ showDinner: false, showBreak: true });
   }
-  clickDinner(e) {
+  clickDinner = (e) => {
     this.setState({ showDinner: true, showBreak: false });
   }
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({ name: e.target.value });
   }
-  handleClick(e) {
+  handleClick=(e)=>{
     console.log(e.target.getAttribute('data-tag'))
     document.getElementById('myInput').value = ''
     this.setState({
@@ -45,24 +37,36 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Burger queen
-          </p>
-        </header>
-
+      <div>
+        <nav className="navbar navbar-dark bg-dark">
+          Burger queen
+        </nav>
         <div className="container">
           <div className="row">
             <div className="col-6 buttons">
               <div className="btn btn-secondary" onClick={this.clickBreakfast}>Desayuno</div>
               <div className="btn btn-info" onClick={this.clickDinner}>Almuerzo</div>
+              <div className="row">
+                <div className="col-12">
+                  <div>
+                    {this.state.showBreak ? <ResultBreak /> : null}
+                  </div>
+                  <div>
+                    {this.state.showDinner ? <ResultDinner /> : null}
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="col-6">
+              {this.state.welcome ?
+              <div className="welcome">
+                  <h4>PEDIDO</h4>
+                  <p >Bienvenido {this.state.prueba}</p>
+              </div> : null}
               {this.state.showForm ?
-                <div className="box float-right">
-                  <div className="">
-                    <form className="">
+              <div className="box float-right">
+                  <div>
+                    <form>
                       <label>
                         Ingrese su nombre :
                 </label>
@@ -75,25 +79,13 @@ class App extends Component {
                 </button>
                     </form>
                   </div>
-                </div> : null}
-              {this.state.welcome ? <div className="welcome"><h4>PEDIDO</h4><p >Bienvenido {this.state.prueba}</p></div> : null}
+              </div> : null}
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div>
-                {this.state.showBreak ? <ResultBreak /> : null}
-              </div>
-              <div>
-                {this.state.showDinner ? <ResultDinner /> : null}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div >
+      </div>
     )
   }
 }
+
 export default App;

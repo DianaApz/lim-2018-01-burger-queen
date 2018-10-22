@@ -5,10 +5,9 @@ class ResultBreak extends Component {
     constructor() {
         super()
         this.state = { operations: [], total: 0 }
-        this.handleClick = this.handleClick.bind(this)
-        this.handleDelete = this.handleDelete.bind(this)
+
     }
-    handleClick(e) {
+    handleClick=(e)=> {
         const add = this.state.total
         const array = this.state.operations
         const value = e.target.getAttribute('data-value')
@@ -23,7 +22,7 @@ class ResultBreak extends Component {
         // this.setState({ total: this.state.total + parseInt(value) })
 
     }
-    handleDelete(id) {
+    handleDelete=(id)=>{
         this.setState({
             operations: this.state.operations.filter((e, index) => {
                 return index !== id
