@@ -7,12 +7,11 @@ class ResultDinner extends Component {
     super()
     this.state = { operations: [], total: 0 }
   }
-  handleClick = (e) => {
-    console.log(e.target.value)
+  handleClick = (text,food,price) => {
     const array = this.state.operations
-    const value = e.target.getAttribute('data-value')
-    const label = e.target.getAttribute('data-tag');
-    array.push({ type: label, price: value });
+    // const value = e.target.getAttribute('data-value')price
+    // const label = e.target.getAttribute('data-tag');food
+    array.push({ type: food, price: price });
     this.state.operations.forEach((obj) => {
       this.setState({ total: this.state.total + parseInt(obj.price) })
     })
@@ -38,7 +37,7 @@ class ResultDinner extends Component {
               <div className="col-6">
                 {data.Almuerzo.map((menudinner, i) => {
                   return (<Breakfast
-                    onClick={this.handleClick}
+                    handleClick={this.handleClick}
                     value={menudinner.price}
                     food={menudinner.type}
                     price={menudinner.price}
@@ -61,7 +60,7 @@ class ResultDinner extends Component {
                   {this.state.operations.map((menu, i) => {
                     return (
                       <div className="card" key={i}>
-                        {menu.type}
+                        {menu.type}S/.{menu.price}
                         <span className="close" onClick={() => this.handleDelete(i)}>
                           x
                         </span>

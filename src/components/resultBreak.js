@@ -7,23 +7,24 @@ class ResultBreak extends Component {
     super()
     this.state = { operations: [], total: 0 }
   }
-  handleClick=(e)=>{
+  handleClick = (text,food,price) => {
+    // console.log(text)
     const array = this.state.operations
-    const value = e.target.getAttribute('data-value')
-    const label = e.target.getAttribute('data-tag');
-    array.push({ type: label, price: value });
+    // const value = e.target.getAttribute('data-value')
+    // const label = e.target.getAttribute('data-tag');
+    array.push({ type: food, price: price });
     this.state.operations.forEach((obj) => {
       this.setState({ total: this.state.total + parseInt(obj.price) })
     })
   }
-  handleDelete=(id)=> {
+  handleDelete = (id) => {
     this.setState({
       operations: this.state.operations.filter((e, index) => {
         return index !== id
       }),
     })
-    this.state.operations.forEach((e,i)=>{
-      if(i===id){
+    this.state.operations.forEach((e, i) => {
+      if (i === id) {
         this.setState({ total: this.state.total - parseInt(e.price) })
       }
     })
@@ -37,36 +38,45 @@ class ResultBreak extends Component {
               <div className="col-6">
                 {data.Desayuno.map((menudinner, i) => {
                   return (<Breakfast
-                    onClick={this.handleClick}
+                    handleClick={this.handleClick}
                     value={menudinner.price}
                     food={menudinner.type}
                     price={menudinner.price}
                     key={i}
                     id={i}
                   />);
-                  })
+                })
                 }
               </div>
               <div className="col-6 ">
-                <div>
-                  {this.state.operations.map((menu, i) => {
-                    return (
-                      <div className="card" key={i}>
-                        {menu.type}
-                        <span className="close" onClick={() => this.handleDelete(i)}>
-                          x
-                        </span>
-                      </div>
-                    )
-                  })}
+                <div className="d-flex justify-content-center">
+                  <form>
+                    <label className="d-flex justify-content-center">
+                      Ingrese su nombre
+                    </label><br></br>
+                    <input id='myInput' onChange={this.handleChange} />
+                  </form>
                 </div>
-                <p>Total = {this.state.total}</p>
+                
+                  <div>
+                    {this.state.operations.map((menu, i) => {
+                      return (
+                        <div className="card" key={i}>
+                          {menu.type}S/.{menu.price}
+                          <span className="close" onClick={() => this.handleDelete(i)}>
+                            x
+                        </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  <p>Total = {this.state.total}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    )
-  }
-}
-export default ResultBreak;
+        )
+      }
+    }
+    export default ResultBreak;

@@ -7,11 +7,14 @@ class Breakfast extends Component {
         this.price = prop.price
         this.text=`${this.food} S/${this.price}`
     }
+    click=(text)=>{
+        this.props.handleClick(this.text,this.food,this.price)
+    }
     render() {
         return (
             <div className="card">
               <div 
-              onClick={this.props.onClick}
+              onClick={()=>{this.click(this.text,this.food,this.price)}}
               className="Button"
               data-tag={this.text}
               data-value={this.props.value}
