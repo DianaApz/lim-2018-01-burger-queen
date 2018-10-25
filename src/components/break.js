@@ -17,7 +17,7 @@ class Breakfast extends Component {
               onClick={()=>{this.click(this.text,this.food,this.price)}}
               className="Button"
               data-tag={this.text}
-              data-value={this.props.value}
+              data-value={this.price}
               >
                  {this.food} S/{this.price}
               </div>

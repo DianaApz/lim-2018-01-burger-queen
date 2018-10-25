@@ -9,8 +9,6 @@ class App extends Component {
     this.state = {
       showBreak: true,
       showDinner: false,
-      name: '',
-      prueba: ''
     };
   }
   clickBreakfast = () => {
@@ -19,28 +17,13 @@ class App extends Component {
   clickDinner = (e) => {
     this.setState({ showDinner: true, showBreak: false });
   }
-  handleChange = (e) => {
-    this.setState({ name: e.target.value });
-  }
-  handleClick = (e) => {
-    console.log(e.target.value)
-    console.log(e.target.getAttribute('data-tag'))
-    document.getElementById('myInput').value = ''
-    this.setState({
-      prueba: this.state.name
-    });
-    this.setState({
-      showForm: false,
-      welcome: true
-    })
-  }
+
   render() {
     return (
       <div>
         <nav className="navbar text-white">
           <h4>BURGER QUEEN</h4>
         </nav>
-
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -55,19 +38,13 @@ class App extends Component {
             </div>
           </div>
         </div>
-
-
-        <div >
+        <div>
           {this.state.showBreak ? <ResultBreak /> : null}
         </div>
         <div >
           {this.state.showDinner ? <ResultDinner /> : null}
         </div>
-
-
-
       </div >
-
     )
   }
 }

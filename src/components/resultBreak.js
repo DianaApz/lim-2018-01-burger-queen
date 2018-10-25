@@ -8,10 +8,9 @@ class ResultBreak extends Component {
     this.state = { operations: [], total: 0 }
   }
   handleClick = (text,food,price) => {
-    // console.log(text)
     const array = this.state.operations
-    // const value = e.target.getAttribute('data-value')
-    // const label = e.target.getAttribute('data-tag');
+    // const price = e.target.getAttribute('data-value')
+    // const total = e.target.getAttribute('data-tag');
     array.push({ type: food, price: price });
     this.state.operations.forEach((obj) => {
       this.setState({ total: this.state.total + parseInt(obj.price) })
@@ -39,7 +38,6 @@ class ResultBreak extends Component {
                 {data.Desayuno.map((menudinner, i) => {
                   return (<Breakfast
                     handleClick={this.handleClick}
-                    value={menudinner.price}
                     food={menudinner.type}
                     price={menudinner.price}
                     key={i}
