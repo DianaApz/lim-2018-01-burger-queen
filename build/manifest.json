@@ -1,8 +1,14 @@
 {
-    "short_name": "React App",
-    "name": "Create React App Sample",
-    "start_url": "https://dianaapz.github.io/lim-2018-01-burger-queen/",
-    "display": "standalone",
+    "short_name": "Burger Queen",
+    "name": "Burger Queen",
+    "background_color": "#ffffff",
     "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "orientation": "portrait",
+    "display": "standalone",
+    "start_url": "https://dianaapz.github.io/lim-2018-01-burger-queen/",
+    "scope": "./",
+    "lang:":"es-MX",
+    "icons":[
+        
+    ]
 }
