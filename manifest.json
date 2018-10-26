@@ -1,0 +1,18 @@
+{
+  "short_name": "Burger Queen",
+  "name": "Burger Queen",
+  "icons": [
+    {
+      "src": "hamburger.png",
+      "sizes": "128x128 64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "https://dianaapz.github.io/lim-2018-01-burger-queen/",
+  "scope": "./",
+  "lang": "es-MX"
+}
